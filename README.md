@@ -3,8 +3,8 @@
 [参考1](https://aclanthology.org/2024.lrec-main.444.pdf)  
 [参考2](https://aclanthology.org/2024.findings-emnlp.374.pdf)  
 [参考3](https://aclanthology.org/2023.ijcnlp-srw.10.pdf)  
-
-
+[参考4](https://www.anlp.jp/proceedings/annual_meeting/2025/pdf_dir/Q7-11.pdf)  
+[参考5](https://github.com/facebookresearch/MUSE)  
 
 ---
 
