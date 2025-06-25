@@ -8,6 +8,8 @@
 
 ---
 
+source .venv/bin/activate
+
 ## 全体ワークフロー
 
 1. **初期化**
