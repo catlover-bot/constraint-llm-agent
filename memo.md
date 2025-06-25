@@ -1,4 +1,3 @@
-以下では、これまで挙げた先行研究とあなたの研究を体系的に比較し、あなたの研究が持つ**３つのコアな新規性**を詳しく解説します。
 
 ---
 
@@ -66,3 +65,37 @@
 3. **検証結果を即時LLMにフィードバックする閉ループ**
 
 これにより、従来「予測モデル＋シミュレータ評価」「ワールドモデル＋オフライン検証」に分かれていた要素を一つのパイプラインに融合し、**試行錯誤によるオンライン計画生成**が可能となる点が、最も大きな新規性です。
+
+
+3. Minecraft シミュレータ／API 連携
+実際の Minecraft クライアントやサーバーでアクションを実行して見たい場合は、下記のような外部ツールと組み合わせます。
+
+Malmo（Microsoft Research）
+
+Python API 経由でワールドを立ち上げ、PLACE/MOVE コマンドをそのままブロックの配置や移動命令に変換できます。
+
+mineflayer（Node.js）/python-mineflayer
+
+Bot としてサーバーに接続し、実際に自分の Minecraft サーバー上でアクションを実行。
+
+Minecraft Pi API
+
+Raspberry Pi エディション向けですが、簡易的にブロック配置が可能。
+
+たとえば Malmo なら：
+
+python
+コピーする
+編集する
+from malmo.minecraft import MinecraftMissionSpec, EntityType
+from malmo.minecraft import startMission, getWorldState
+
+# mission_spec = MinecraftMissionSpec(...)
+# 省略：ワールドの初期化
+agent_host = MalmoPython.AgentHost()
+# ブロック配置アクションをマルモ指令に変換
+for action in actions:
+    if action['type']=='PLACE':
+        agent_host.sendCommand(f"setBlock {action['x']} {action['y']} {action['z']} minecraft:{action['block']}")
+こうすると、本物の Minecraft ウィンドウ上でブロックがポンポン置かれていくのが目で追えます。
+
